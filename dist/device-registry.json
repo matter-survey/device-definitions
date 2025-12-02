@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2025-12-02T08:14:03.035Z",
+  "generatedAt": "2025-12-02T08:21:04.397Z",
   "devices": [
     {
       "id": "eve_thermo",
@@ -48,7 +48,13 @@
                     "S"
                   ],
                   "description": "Current valve opening position",
-                  "unit": "%"
+                  "unit": "%",
+                  "sensor": {
+                    "entityType": "sensor",
+                    "stateClass": "measurement",
+                    "entityCategory": "diagnostic",
+                    "icon": "mdi:valve"
+                  }
                 },
                 {
                   "id": 319422480,
@@ -59,7 +65,14 @@
                     "W"
                   ],
                   "description": "Temperature calibration offset. Value in 0.1°C increments.",
-                  "unit": "0.1°C"
+                  "unit": "°C",
+                  "sensor": {
+                    "entityType": "number",
+                    "deviceClass": "temperature",
+                    "entityCategory": "config",
+                    "scale": 0.1,
+                    "icon": "mdi:thermometer-plus"
+                  }
                 }
               ]
             }
@@ -208,7 +221,13 @@
             "S"
           ],
           "description": "Current valve opening position",
-          "unit": "%"
+          "unit": "%",
+          "sensor": {
+            "entityType": "sensor",
+            "stateClass": "measurement",
+            "entityCategory": "diagnostic",
+            "icon": "mdi:valve"
+          }
         },
         {
           "id": 319422480,
@@ -219,7 +238,14 @@
             "W"
           ],
           "description": "Temperature calibration offset. Value in 0.1°C increments.",
-          "unit": "0.1°C"
+          "unit": "°C",
+          "sensor": {
+            "entityType": "number",
+            "deviceClass": "temperature",
+            "entityCategory": "config",
+            "scale": 0.1,
+            "icon": "mdi:thermometer-plus"
+          }
         }
       ]
     },

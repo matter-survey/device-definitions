@@ -58,6 +58,30 @@ export type AttributeType = PrimitiveAttributeType | EnumAttributeType | BitmapA
  */
 export type AttributeAccess = 'R' | 'W' | 'S';
 /**
+ * Home Assistant entity category
+ */
+export type HAEntityCategory = 'config' | 'diagnostic';
+/**
+ * Home Assistant sensor metadata for automatic entity creation.
+ * When present, the attribute will be exposed as an HA entity.
+ */
+export interface HASensorMeta {
+    /** Entity type to create */
+    entityType: 'sensor' | 'binary_sensor' | 'number';
+    /** HA device class (e.g., "temperature", "humidity", "battery", "valve") */
+    deviceClass?: string;
+    /** State class for sensors (e.g., "measurement", "total_increasing") */
+    stateClass?: 'measurement' | 'total' | 'total_increasing';
+    /** Entity category */
+    entityCategory?: HAEntityCategory;
+    /** Scale factor to apply to raw value (e.g., 0.1 to convert 10ths to units) */
+    scale?: number;
+    /** Icon override (mdi:icon-name format) */
+    icon?: string;
+    /** Value mapping for enum types: raw value -> display string */
+    valueMap?: Record<number, string>;
+}
+/**
  * Attribute definition within a cluster
  */
 export interface AttributeDefinition {
@@ -71,10 +95,12 @@ export interface AttributeDefinition {
     access: AttributeAccess[];
     /** Optional description */
     description?: string;
-    /** Optional unit (e.g., "%", "C", "ms") */
+    /** Optional unit (e.g., "%", "°C", "ms") */
     unit?: string;
     /** Optional parser reference for complex types */
     parser?: string;
+    /** Home Assistant sensor metadata - if present, attribute is exposed as entity */
+    sensor?: HASensorMeta;
 }
 /**
  * Cluster definition (standard or vendor-specific)

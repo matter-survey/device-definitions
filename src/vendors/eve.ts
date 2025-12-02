@@ -61,6 +61,12 @@ export const eveThermoCluster: ClusterDefinition = {
       access: ['R', 'S'],
       description: 'Current valve opening position',
       unit: '%',
+      sensor: {
+        entityType: 'sensor',
+        stateClass: 'measurement',
+        entityCategory: 'diagnostic',
+        icon: 'mdi:valve',
+      },
     },
     {
       id: EVE_ATTR_TEMPERATURE_OFFSET,
@@ -69,7 +75,14 @@ export const eveThermoCluster: ClusterDefinition = {
       access: ['R', 'W'],
       description:
         'Temperature calibration offset. Value in 0.1°C increments.',
-      unit: '0.1°C',
+      unit: '°C',
+      sensor: {
+        entityType: 'number',
+        deviceClass: 'temperature',
+        entityCategory: 'config',
+        scale: 0.1,
+        icon: 'mdi:thermometer-plus',
+      },
     },
   ],
 };
