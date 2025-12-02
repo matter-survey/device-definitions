@@ -1,0 +1,51 @@
+{
+  "name": "@matter-survey/device-definitions",
+  "version": "0.1.0",
+  "description": "Proprietary Matter device metadata definitions for clusters, attributes, and device types",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./registry.json": "./dist/device-registry.json"
+  },
+  "scripts": {
+    "build": "tsc && npm run build:json",
+    "build:json": "tsx src/scripts/generate-json.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "files": [
+    "dist/"
+  ],
+  "keywords": [
+    "matter",
+    "smart-home",
+    "home-assistant",
+    "device-definitions",
+    "homekit",
+    "thread"
+  ],
+  "author": "Matter Survey Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matter-survey/device-definitions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matter-survey/device-definitions/issues"
+  },
+  "homepage": "https://github.com/matter-survey/device-definitions#readme",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "eslint": "^8.55.0",
+    "tsx": "^4.6.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  }
+}
